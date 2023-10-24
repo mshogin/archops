@@ -1,0 +1,17 @@
+@startuml
+!include <C4/C4_Container>
+!theme toy
+scale 1.5
+
+Container_Ext(ib, "Информационная безопастность")
+Container_Ext(any, "Потребитель уведомлений")
+Container(hr, "Кадры")
+ContainerQueue(kafka, "Kafka: topic employee_sync")
+
+
+Rel_Down(hr, kafka, "Сформировать и отправить сообщение")
+
+Rel_Up(any, kafka, "Получить и обработать сообщение")
+Rel_Up(ib, kafka, "Получить и обработать сообщение")
+
+@enduml

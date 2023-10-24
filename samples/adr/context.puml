@@ -1,0 +1,13 @@
+@startuml
+!include <C4/C4_Context>
+!theme toy
+scale 1.5
+
+System_Ext(ib, "Информационная безопастность")
+System_Ext(any, "Потребитель уведомлений")
+System(hr, "Кадры")
+
+Rel_Down(hr, any, "Уведомляет об изменениях сотрудника")
+Rel_Down(hr, ib, "Уведомляет об изменениях сотрудника")
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+!theme toy
+scale 1.5
+
+actor "Кадры" as kadry
+actor "Admin" as admin
+participant "Employee" as hr
+participant "Kafka" as kafka
+
+== Увольнение сотрудника с бессрочным котрактом ==
+group  API
+        alt автоматика
+                kadry -> 1c: Обновить контракт сотрудника
+        else иногда происходит ручное обновление
+                admin -> hr: Обновить контракт сотрудника
+        end
+
+        hr -> kafka: Отправить сообщение о изменении статуса сотрудника
+end
+
+
+@enduml
